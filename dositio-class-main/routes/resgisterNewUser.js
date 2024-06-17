@@ -15,7 +15,7 @@ export default async function newUser(app, options) {
                     username: { type: 'string' },
                     password: { type: 'string' }
                 },
-                required: ["_id",'username', 'password']
+                required: ['username', 'password']
             }
         },
         config: {
