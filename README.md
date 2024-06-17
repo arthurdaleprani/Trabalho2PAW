@@ -1,8 +1,8 @@
 # Trabalho 2
 ## Arthur Daleprani e Pedro Henrique Lucas Belo
 ## Sobre:
-Um sistema de gerenciamento de jogos, onde o usuario pode cadastrar seus jogos com base no seu gênero.
-Jogos são cadastrados com um Id, descrição, nota e titulo.
+Um sistema de gerenciamento de jogos, onde o usuario pode cadastrarseus jogos com base no seu gênero.
+Jogos são cadastrados com um Id, descrição, nota e titulo. Podendo ser deletadas e atualizados.
 Foram implementas as telas de cadastro e login.
 ### DOTENV
 STAGE='dev'
