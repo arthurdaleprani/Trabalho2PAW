@@ -9,7 +9,7 @@ const Home = async ({}) => {
     router.push('/login');
   };
   const handleRegister = () => {
-    router.push('/Register');
+    router.push('/register');
   };
 
   return (

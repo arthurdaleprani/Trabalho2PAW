@@ -7,11 +7,11 @@ import { request } from '@/services/request';
 const AddGames= () => {
     const { addGames } = useContext(GamesContext);
 
-    const [description, setDescription] = useState('');
+    const [descGame, setDescGame] = useState('');
     const [_id, setId] = useState<number | undefined>();
     const [name, setName] = useState('');
-    const [category, setCategory] = useState(0);
-    const [avalicao, setAvaliacao] = useState(0);
+    const [generoGame, setGeneroGame] = useState(0);
+    const [notaGame, setNotaGame] = useState(0);
 
     const Stage = {
         Esportes: 0,
@@ -23,17 +23,17 @@ const AddGames= () => {
 
     const handleSaveGames = async () => {
         const games = {
-            description,
+            descGame,
             _id,
             name,
-            category,
-            avalicao
+            generoGame,
+            notaGame
         };
 
         try {
             if (_id !== undefined)
-            addGames (_id, name, category, avalicao, description)
-            const save = await request('http://127.0.0.1:5000/Games', {
+            addGames (_id, name, generoGame, notaGame, descGame)
+            const save = await request('http://127.0.0.1:5000/games', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,11 +47,11 @@ const AddGames= () => {
 
             if (save == true) {
               
-                setDescription('');
+                setDescGame('');
                 setId(undefined);
                 setName('');
-                setCategory(0);
-                setAvaliacao(0);
+                setGeneroGame(0);
+                setNotaGame(0);
             } else {
                 console.error('Erro ao salvar o Jogo');
             }
@@ -97,21 +97,34 @@ const AddGames= () => {
                     <input 
                         type="text"
                         id="descricao"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        value={descGame}
+                        onChange={(e) => setDescGame(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Descrição do jogo"
+                    />
+                </div>
+
+                <div className="w-full md:w-1/2 px-2 mb-4">
+                    <label htmlFor="descricao" className="block text-gray-700 font-bold mb-1">Nota:</label>
+                    <input 
+                        type="text"
+                        id="descricao"
+                        value={notaGame}
+                        onChange={(e) => setNotaGame(parseInt(e.target.value))}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         placeholder="Descrição do jogo"
                     />
                 </div>
             </div>
+            
           
             <div className="flex flex-wrap -mx-2">
                 <div className="w-full px-2 mb-4">
                     <label htmlFor="categoria" className="block text-gray-700 font-bold mb-1">Categoria</label>
                     <select
                         id="categoria"
-                        value={category}
-                        onChange={(e) => setCategory(Number(e.target.value))}
+                        value={generoGame}
+                        onChange={(e) => setGeneroGame(Number(e.target.value))}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     >
                         <option>Selecione a categoria</option>

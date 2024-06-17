@@ -14,15 +14,15 @@ export enum Stage {
 
 export type Games = {
 _id : number
-description : string
+descGame : string
 name : string
-category : Stage
-avalicao : number
+generoGame : Stage
+notaGame : number
 }
 
 type ContextGames = {
     games: Games[];
-    addGames: (_id:number, name:string, category:Stage, avalicao:number, description:string) => void;
+    addGames: (_id:number, name:string, generoGame:Stage, notaGame:number, descGame:string) => void;
 
     updatGames: () => void;
 
@@ -43,13 +43,13 @@ export const GamesContextProvider = ({ children }: { children: React.ReactNode }
     const [updatedGames, setUpdatedGames] = useState(false);
 
 
-    const addGames = (_id:number, name:string, category:Stage, avalicao:number, description:string) => {
+    const addGames = (_id:number, name:string, generoGame:Stage, notaGame:number, descGame:string) => {
         let newGames = {
             _id: _id,
             name: name,
-            category: category,
-            avalicao: avalicao,
-            description: description
+            generoGame: generoGame,
+            notaGame: notaGame,
+            descGame: descGame
         }
         setGames([...games, newGames]);
     };
@@ -77,7 +77,7 @@ export const GamesContextProvider = ({ children }: { children: React.ReactNode }
 
     const updatGames = async () => {
         if(!updatedGames){
-            let res = await request<Games[]>('http://127.0.0.1:5000/products', {
+            let res = await request<Games[]>('http://127.0.0.1:5000/games', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -95,7 +95,7 @@ export const GamesContextProvider = ({ children }: { children: React.ReactNode }
 
     const changeGames = (index: number, newStage: Stage) => {
         let updatedGames = [...games];
-        updatedGames[index].category = newStage;
+        updatedGames[index].generoGame = newStage;
         setGames(updatedGames);
     };
 

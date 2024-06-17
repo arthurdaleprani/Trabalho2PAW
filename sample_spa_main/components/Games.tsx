@@ -3,7 +3,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { GamesContext, Games, Stage } from "@/context/GamesContex";
 
-const ListProduct = () => {
+const ListGames = () => {
     const { games, removeGames, deleteGames, updatGames} = useContext(GamesContext);
     const [selectedTab, setSelectedTab] = useState(Stage.Esportes);
 
@@ -37,8 +37,8 @@ const ListProduct = () => {
 
                 {games.map((games: Games, index: number) => (
                     
-                    <>{games.category == selectedTab && 
-                        <li className='font-light mt-3'> Nome: {games.name} | Descrição: {games.description}
+                    <>{games.generoGame == selectedTab && 
+                        <li className='font-light mt-3'> Nome: {games.name} | Descrição: {games.descGame} | Nota:{games.notaGame}
 
                     {"   "}   <button className= "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline" 
                             onClick={() => {
@@ -59,4 +59,4 @@ const ListProduct = () => {
     );
 };
 
-export default ListProduct;
+export default ListGames;

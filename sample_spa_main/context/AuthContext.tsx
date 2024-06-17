@@ -50,12 +50,12 @@ export default function AuthProvider( { children }: { children: React.ReactNode 
                 maxAge: 60 * 60 * 1,
             });
             
-            router.push('/Games');
+            router.push('/games');
         }
     }
 
     const registerUser = async (username:string, password:string, isAdmin:boolean) => {
-        let res = await request<RegisterResponse>('http://127.0.0.1:5000/Register', {
+        let res = await request<RegisterResponse>('http://127.0.0.1:5000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
