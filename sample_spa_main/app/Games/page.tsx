@@ -3,7 +3,7 @@ import { GamesContextProvider } from "@/context/GamesContex";
 import ListGames from '@/components/Games';
 import AddGames from '@/components/AddGames';
 
-const Tasks = () => {
+const Games = () => {
   return (
     <main className="h-screen">
       <h1 className="text-2xl sm:text-4xl font-black tracking-wide text-center pt-6 pb-10 sm:pb-24">
@@ -23,4 +23,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default Games;

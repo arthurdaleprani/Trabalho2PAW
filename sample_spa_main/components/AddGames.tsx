@@ -93,24 +93,24 @@ const AddGames= () => {
 
 
                 <div className="w-full md:w-1/2 px-2 mb-4">
+                    <label htmlFor="descricao" className="block text-gray-700 font-bold mb-1">Nota:</label>
+                    <input 
+                        type="text"
+                        id="nota"
+                        value={notaGame}
+                        onChange={(e) => setNotaGame(parseInt(e.target.value))}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Descrição do jogo"
+                    />
+                </div>
+                
+                <div className="w-full md:w-1/2 px-2 mb-4">
                     <label htmlFor="descricao" className="block text-gray-700 font-bold mb-1">Descrição</label>
                     <input 
                         type="text"
                         id="descricao"
                         value={descGame}
                         onChange={(e) => setDescGame(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                        placeholder="Descrição do jogo"
-                    />
-                </div>
-
-                <div className="w-full md:w-1/2 px-2 mb-4">
-                    <label htmlFor="descricao" className="block text-gray-700 font-bold mb-1">Nota:</label>
-                    <input 
-                        type="text"
-                        id="descricao"
-                        value={notaGame}
-                        onChange={(e) => setNotaGame(parseInt(e.target.value))}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                         placeholder="Descrição do jogo"
                     />
