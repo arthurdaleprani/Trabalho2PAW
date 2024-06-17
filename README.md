@@ -1,6 +1,9 @@
 # Trabalho 2
 ## Arthur Daleprani e Pedro Henrique Lucas Belo
-
+## Sobre:
+Um sistema de gerenciamento de jogos, onde o usuario pode cadastrar seus jogos com base no seu gênero
+Jogos são cadastrados com um Id, descrição, nota e titulo.
+Foram implementas as telas de cadastro e login.
 ### DOTENV
 STAGE='dev'
 PORT='5000'
