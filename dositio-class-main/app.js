@@ -6,6 +6,7 @@ import jwt from '@fastify/jwt';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import dotenv from 'dotenv';
+import cors from '@fastify/cors';
 
 dotenv.config();
 
@@ -38,6 +39,9 @@ export async function build(opts){
         url: opts.db_url
     });
     
+    await app.register(cors, { 
+        origin: true
+    });
     await app.register(autoload, {
         dir: path.join(__dirname, 'hooks'),
         encapsulate: false,
