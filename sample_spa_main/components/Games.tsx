@@ -34,26 +34,23 @@ const ListGames = () => {
             </div>
 
             <ul className="max-w-md space-y-1 text-gray-700 text-center mb-4">
-
-                {games.map((games: Games, index: number) => (
-                    
-                    <>{games.generoGame == selectedTab && 
-                        <li className='font-light mt-3'> Nome: {games.name} | Descrição: {games.descGame} | Nota:{games.notaGame}
-
-                    {"   "}   <button className= "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline" 
-                            onClick={() => {
-                            removeGames(index);
-                            deleteGames(games._id);
-                            }}>
-                            Deletar
-                        </button>
-                    
-                        </li>
-                    }</>
-                    
-                ))}
-
-            </ul>
+        {Array.isArray(games) && games.map((game, index) => (
+          game.generoGame === selectedTab && (
+            <li key={game._id} className="font-light mt-3">
+              Nome: {game.name} | Descrição: {game.descGame} | Nota: {game.notaGame}
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+                onClick={() => {
+                  removeGames(index);
+                  deleteGames(game._id);
+                }}
+              >
+                Deletar
+              </button>
+            </li>
+          )
+        ))}
+      </ul>
             
         </div>
     );

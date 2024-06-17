@@ -37,12 +37,12 @@ const AddGames= () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9pIiwiaWF0IjoxNzE4MzI0NjUzfQ.V6ewEFTfTdzoJf8DULI9yVE7c8WKI2fPoV5FE8xsqs0', 
+                    'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoib2lzYXNhIiwiaWF0IjoxNzE4NjYzNTg4fQ.Fvo0Bn1TABDTbNmOnsyIdixB63d_zFR7o87wpiVHKsY', 
                     'isAdmin': 'true'
                 },
                 referrerPolicy: 'no-referrer',
                 cache: 'no-store',
-                body: JSON.stringify(games)
+                body: JSON.stringify({_id, generoGame, notaGame, name, descGame})
             });
 
             if (save == true) {

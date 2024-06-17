@@ -2,6 +2,7 @@ import React from 'react';
 import { GamesContextProvider } from "@/context/GamesContex";
 import ListGames from '@/components/Games';
 import AddGames from '@/components/AddGames';
+import AttGames from '@/components/AttGame';
 
 const Games = () => {
   return (
@@ -17,6 +18,7 @@ const Games = () => {
 
         <ListGames/>
        
+         <AttGames/>
         </GamesContextProvider>
       </div>
     </main>

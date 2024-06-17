@@ -27,10 +27,11 @@ type ContextGames = {
     updatGames: () => void;
 
     updatedGames: boolean;
-
+    UpdateGames:(_id:number, name:string, notaGame:number, generoGame:Stage, descGame:string)=>void;
     removeGames: (index: number) => void;
     changeGames: (index: number, newStage: Stage) => void;
     deleteGames : (index: number) => void;
+    refreshPage: () => void;
 };
 
 export const GamesContext = createContext({} as ContextGames);
@@ -91,16 +92,35 @@ export const GamesContextProvider = ({ children }: { children: React.ReactNode }
         }
     }
 
+    const refreshPage = () => { 
+        window.location.reload(); 
+    }
 
 
     const changeGames = (index: number, newStage: Stage) => {
         let updatedGames = [...games];
         updatedGames[index].generoGame = newStage;
+        
         setGames(updatedGames);
     };
 
+
+    const UpdateGames = async (_id:number, name:string, notaGame:number, generoGame:Stage, descGame:string) => {
+        let res = await request<Games>(`http://127.0.0.1:5000/games/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hcm5lIiwiaWF0IjoxNzE4NTQyNzI5fQ.ygB9dsOhg7XmJzzV61hSoLK3qoy00v0wnhwrvlE2bDo',
+                'isAdmin': 'true'
+            },
+            body: JSON.stringify({ _id, name, notaGame, generoGame, descGame }),
+            referrerPolicy: 'no-referrer',
+            cache: 'no-store'
+        }, )
+    }
+
     return (
-        <GamesContext.Provider value={{ games, addGames, removeGames, changeGames, deleteGames, updatedGames, updatGames }}>
+        <GamesContext.Provider value={{ games, addGames, removeGames, changeGames, deleteGames, updatedGames, updatGames, refreshPage, UpdateGames }}>
             {children}
         </GamesContext.Provider>
     );
